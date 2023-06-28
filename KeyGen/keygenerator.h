@@ -4,12 +4,16 @@
 #include <QByteArray>
 #include <QCryptographicHash>
 #include <QSettings>
+#include <QDateTime>
+#include <QRandomGenerator>
 
 
 class KeyGenerator
 {
 public:
-    QString generateSoftwareKey();
+    QString generateUniqeSoftwareKey();
+    QString generatedKey();
+
 private:
     QString retrieveHardwareInfo();
     QByteArray hashData(const QByteArray& data);

@@ -14,7 +14,7 @@ QString KeyGenerator::retrieveHardwareInfo() {
 }
 
 
-QString KeyGenerator::generateSoftwareKey() {
+QString KeyGenerator::generateUniqeSoftwareKey() {
     QString hardwareInfo = retrieveHardwareInfo();
 
     QByteArray concatenatedData = hardwareInfo.toUtf8();
@@ -26,4 +26,20 @@ QString KeyGenerator::generateSoftwareKey() {
     return softwareKey;
 }
 
+QString KeyGenerator::generatedKey(){
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    qint64 timestamp = currentDateTime.toMSecsSinceEpoch();
+
+    QString key = QString::number(timestamp);
+    key += QString::number(QRandomGenerator::global()->generate());
+
+    // Add different characters to the key
+    key += "ABCDEF1234567890!@#$%^&*()";
+
+    QByteArray keyBytes = key.toUtf8();
+    QByteArray hashedKey = hashData(keyBytes);
+    QString encodedKey = encodeData(hashedKey);
+
+    return encodedKey;
+}
 
