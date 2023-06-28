@@ -6,6 +6,9 @@
 #include <QTextEdit>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QClipboard>
+#include <QApplication>
+
 
 #include "keygenerator.h"
 

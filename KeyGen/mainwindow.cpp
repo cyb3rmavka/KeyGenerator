@@ -29,11 +29,15 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::handleBtnCopyGenereteKey(){
 
+    QString text = out_text_key->toPlainText(); // Get the text from the text field
+
+    QClipboard *clipboard = QApplication::clipboard();
+    clipboard->setText(text);
 }
 
 void MainWindow::handleBtnGenereteKey(){
     KeyGenerator kg;
-    QString key = kg.generateSoftwareKey();
+    QString key = kg.generatedKey();
     out_text_key->setText(key);
 
 }
