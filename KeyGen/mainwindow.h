@@ -24,7 +24,6 @@ private slots:
     void handleBtnCopyGenereteKey();
 
 private:
-
     QPushButton *btn_generete_key;
     QPushButton *btn_copy_key;
     QTextEdit *out_text_key;
