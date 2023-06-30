@@ -86,10 +86,6 @@ void MainWindow::deactivateKey() {
 void MainWindow::checkStatus() {
     QString key = keyEntryField->text();
 
-    // TODO: Implement key status check logic here
-    // For example, you can read and compare the saved key value
-
-    // Example: Read the saved key value from the file
     QSettings settings("config.ini", QSettings::IniFormat);
 
     if (settings.contains("KeyStatus")) {
