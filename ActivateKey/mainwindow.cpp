@@ -1,36 +1,22 @@
 #include "mainwindow.h"
 
-unsigned char encryptionKey[AES_BLOCK_SIZE];
-unsigned char iv[AES_BLOCK_SIZE];
-
-void generateRandomBytes(unsigned char *buffer, size_t length) {
-    if (RAND_bytes(buffer, length) != 1) {
-        // Error handling
-    }
-}
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent) {
-    // Create the central widget
+
     QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
-    // Create the key entry field
     keyEntryField = new QLineEdit(centralWidget);
 
-    // Create the key activation button
     activationButton = new QPushButton("Активація", centralWidget);
     connect(activationButton, &QPushButton::clicked, this, &MainWindow::activateKey);
 
-    // Create the key deactivation button
     deactivationButton = new QPushButton("Деактивація", centralWidget);
     connect(deactivationButton, &QPushButton::clicked, this, &MainWindow::deactivateKey);
 
-    // Create the key status button
     statusButton = new QPushButton("Перевірка статуса", centralWidget);
     connect(statusButton, &QPushButton::clicked, this, &MainWindow::checkStatus);
 
-    // Create the layout
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
     mainLayout->addWidget(keyEntryField);
     mainLayout->addWidget(activationButton);
@@ -57,14 +43,12 @@ void MainWindow::activateKey() {
         return;
     }
     keyActive = true;
-    // Save the key status to the configuration file
 
     settings.setValue("KeyStatus", key);
     settings.setValue("Exist", keyActive);
     QMessageBox::information(this, "Статус", "Ключ активовано!");
     qDebug() << "Key activated";
 
-    // Disable key entry field after activation
     keyEntryField->setDisabled(true);
 }
 
