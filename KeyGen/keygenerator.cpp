@@ -15,12 +15,10 @@ QString KeyGenerator::retrieveHardwareInfo() {
 
 
 QString KeyGenerator::generateUniqeSoftwareKey() {
+   
     QString hardwareInfo = retrieveHardwareInfo();
-
     QByteArray concatenatedData = hardwareInfo.toUtf8();
-
     QByteArray hashedData = hashData(concatenatedData);
-
     QString softwareKey = encodeData(hashedData);
 
     return softwareKey;
@@ -32,8 +30,6 @@ QString KeyGenerator::generatedKey(){
 
     QString key = QString::number(timestamp);
     key += QString::number(QRandomGenerator::global()->generate());
-
-    // Add different characters to the key
     key += "ABCDEF1234567890!@#$%^&*()";
 
     QByteArray keyBytes = key.toUtf8();
