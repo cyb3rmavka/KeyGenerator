@@ -22,8 +22,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(btn_copy_key, &QPushButton::clicked, this, &MainWindow::handleBtnCopyGenereteKey);
     connect(btn_generete_key, &QPushButton::clicked, this, &MainWindow::handleBtnGenereteKey);
-
-
 }
 
 
